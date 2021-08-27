@@ -1,0 +1,43 @@
+---
+title: "Leaflet"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+Just some map of my past 7 months
+
+## 27.8.2021
+
+```{r}
+library(leaflet)
+
+MuniIcon <- makeIcon(
+  iconUrl = "https://sablony.muni.cz/podpis/logo/muni.png",
+  iconWidth = 15*130/38, iconHeight = 15
+)
+
+my_map <- leaflet() %>%
+  addTiles() %>%
+  addMarkers(lat = c(50.094567502913534,
+                     41.39960402837592,
+                     49.19615261055347),
+             lng = c(14.404069174647836,
+                     2.1649566841610883,
+                     16.611598087290893),
+             popup = c("My office", 
+                       "I lived here",
+                       "My hometown")
+             
+  ) %>%
+  addMarkers(lat = 49.19854575161453,
+             lng = 16.605190878866477,
+             popup = "My University",
+             icon = MuniIcon,
+             clusterOptions = markerClusterOptions())
+my_map
+```
+
+
